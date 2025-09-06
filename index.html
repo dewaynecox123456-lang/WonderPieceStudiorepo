@@ -1,33 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wonder Piece Studio</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: #fafafa; }
-    header { background: #222; color: #fff; padding: 20px; font-size: 24px; }
-    nav { background: #444; padding: 10px; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; }
-    nav a:hover { text-decoration: underline; }
-    section { padding: 40px; }
-    footer { background: #222; color: #fff; padding: 10px; font-size: 12px; }
-  </style>
-</head>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wonder Piece Studio</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<script defer src="/assets/js/app.js"></script></head>
 <body>
-  <header>Wonder Piece Studio</header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/site/crochet/index.html">Crochet</a>
-    <a href="/site/support/index.html">Support</a>
-    <a href="/site/admin/index.html">Admin</a>
-    <a href="/site/legal.html">Legal</a>
-  </nav>
-  <section>
-    <h1>Welcome to Wonder Piece Studio</h1>
-    <p>Handcrafted art, puzzles, and creative services.</p>
-    <p><a href="https://reliable-pasca-11ae81.netlify.app/" target="_blank">Payments & IT Tools</a></p>
-  </section>
-  <footer>© 2025 Wonder Piece Studio. All Rights Reserved.</footer>
-</body>
-</html>
+<div class="banner"></div>
+<header><img class="logo" src="/assets/img/logo/wps-logo.png" alt="WPS Logo"><div class="brand">Wonder Piece Studio</div></header>
+<nav>
+  <a href="/">Home</a>
+  <a href="/site/puzzles/index.html">Puzzles</a>
+  <a href="/site/artist/index.html">Artist Showcase</a>
+  <a href="/site/support/index.html">Support</a>
+  <a href="/site/admin/index.html">Admin</a>
+  <a href="https://reliable-pasca-11ae81.netlify.app/" target="_blank" rel="noopener">IT Tools</a>
+</nav>
+<section class="container">
+  <h2>Puzzles of the Week</h2>
+  <div class="grid">
+    <div class="card"><img src="/assets/img/puzzles/Laundry_Night.webp"><div class="body"><div class="title">Laundry Night — 500pc</div><div class="price">$39.00</div><div style="display:flex;gap:8px"><button class="btn" onclick="buyItem('pz-laundry','paypal')">PayPal</button><button class="btn" onclick="buyItem('pz-laundry','cashapp')">Cash App</button></div></div></div>
+    <div class="card"><img src="/assets/img/puzzles/Teal_Truck_Fair.webp"><div class="body"><div class="title">Teal Truck Fair — 500pc</div><div class="price">$39.00</div><div style="display:flex;gap:8px"><button class="btn" onclick="buyItem('pz-truck','paypal')">PayPal</button><button class="btn" onclick="buyItem('pz-truck','cashapp')">Cash App</button></div></div></div>
+    <div class="card"><img src="/assets/img/puzzles/Porch_Swing_Moon.webp"><div class="body"><div class="title">Porch Swing Moon — 500pc</div><div class="price">$39.00</div><div style="display:flex;gap:8px"><button class="btn" onclick="buyItem('pz-porch','paypal')">PayPal</button><button class="btn" onclick="buyItem('pz-porch','cashapp')">Cash App</button></div></div></div>
+  </div>
+</section>
+<footer>© 2025 Wonder Piece Studio. All Rights Reserved.</footer>
+</body></html>
