@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "title": "Sweet Tea Moon",
+      "price": 39,
+      "pieces": 500,
+      "size": "18\u00d724 in",
+      "img": "assets/sample1.jpg",
+      "tag": "Limited Run",
+      "active": true
+    },
+    {
+      "title": "Fair City",
+      "price": 49,
+      "pieces": 1000,
+      "size": "20\u00d728 in",
+      "img": "assets/sample2.jpg",
+      "tag": "Collector",
+      "active": true
+    },
+    {
+      "title": "Bayou Sauce",
+      "price": 45,
+      "pieces": 750,
+      "size": "18\u00d724 in",
+      "img": "assets/sample3.jpg",
+      "tag": "New",
+      "active": true
+    }
+  ]
+}

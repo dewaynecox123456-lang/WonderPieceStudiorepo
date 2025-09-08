@@ -1,0 +1,146 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "site/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "settings"
+    label: "Settings (Checkout, Links & Payments)"
+    files:
+      - file: "site/config.json"
+        label: "Site Config"
+        name: "config"
+        fields:
+          - { label: "Item Name", name: "itemName", widget: "string" }
+          - { label: "Base Price", name: "basePrice", widget: "number", value_type: "float", min: 0 }
+          - { label: "Currency", name: "currency", widget: "string", default: "USD" }
+          - label: "PayPal (Store Checkout)"
+            name: "paypal"
+            widget: "object"
+            fields:
+              - { label: "Business Email", name: "business", widget: "string" }
+          - label: "Cash App (Store Checkout)"
+            name: "cashapp"
+            widget: "object"
+            fields:
+              - { label: "Enabled", name: "enabled", widget: "boolean", default: false }
+              - { label: "Cashtag (no $)", name: "cashtag", widget: "string", required: false }
+          - { label: "IT Tools Link", name: "itToolsLink", widget: "string" }
+          - { label: "Tip Presets", name: "tipPresets", widget: "list", field: {label: "Amount", name: "amount", widget: "number"} }
+          - { label: "Ticket Prefix", name: "ticketPrefix", widget: "string", default: "WPS" }
+          - label: "Showcase (Paid Submission)"
+            name: "showcase"
+            widget: "object"
+            fields:
+              - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+              - { label: "Fee", name: "fee", widget: "number", value_type: "float", min: 0 }
+              - { label: "Currency", name: "currency", widget: "string", default: "USD" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Providers"
+                name: "providers"
+                widget: "object"
+                fields:
+                  - label: "PayPal.Me"
+                    name: "paypalMe"
+                    widget: "object"
+                    fields:
+                      - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+                      - { label: "PayPal.Me Link", name: "link", widget: "string" }
+                  - label: "Cash App"
+                    name: "cashapp"
+                    widget: "object"
+                    fields:
+                      - { label: "Enabled", name: "enabled", widget: "boolean", default: false }
+                      - { label: "Cashtag (no $)", name: "cashtag", widget: "string" }
+
+          - label: "Commissions (Optional)"
+            name: "commissions"
+            widget: "object"
+            fields:
+              - { label: "Enabled", name: "enabled", widget: "boolean", default: true }
+              - { label: "Inbox Email", name: "email", widget: "string" }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+
+  - name: "puzzles"
+    label: "Puzzles (Shop Grid)"
+    files:
+      - file: "site/puzzles.json"
+        label: "Puzzle List"
+        name: "puzzles"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "number", value_type: "float", min: 0 }
+              - { label: "Pieces", name: "pieces", widget: "number", min: 0 }
+              - { label: "Size", name: "size", widget: "string", required: false }
+              - { label: "Tag", name: "tag", widget: "string", required: false }
+              - { label: "Image", name: "img", widget: "image" }
+              - { label: "Active", name: "active", widget: "boolean", default: true }
+
+  - name: "crochet"
+    label: "Crochet Items"
+    files:
+      - file: "site/items.json"
+        label: "Crochet List"
+        name: "items"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Image", name: "img", widget: "image" }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+
+  - name: "models"
+    label: "Model Kits"
+    files:
+      - file: "site/models.json"
+        label: "Models"
+        name: "models"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Image", name: "img", widget: "image" }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+
+  - name: "supplies"
+    label: "Supplies & Netting"
+    files:
+      - file: "site/supplies.json"
+        label: "Supplies"
+        name: "supplies"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Image", name: "img", widget: "image" }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+
+  - name: "gallery"
+    label: "Gallery Images"
+    files:
+      - file: "site/gallery.json"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Image", name: "img", widget: "image" }

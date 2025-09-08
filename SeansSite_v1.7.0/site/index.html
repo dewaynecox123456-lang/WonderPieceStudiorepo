@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sean's Puzzles — Wonder Piece Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body class="blend">
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Wonder Piece Studio logo">
+      <div><h1>Wonder Piece Studio</h1><div class="sub">Puzzles • Crochet • Models • Supplies</div></div>
+    </div>
+    <nav>
+      <a href="/">Home</a><a href="gallery.html">Gallery</a><a href="crochet.html">Crochet</a>
+      <a href="models.html">Models</a><a href="supplies.html">Supplies</a>
+      <a href="contact.html">Contact</a><a id="itToolsLink" href="https://reliable-pasca-11ae81.netlify.app/" target="_blank" rel="noopener">IT Tools</a><a href="admin/">Admin</a>
+    </nav>
+  </div>
+</header>
+<section class="hero wrap">
+  <div class="panel">
+    <div><h2>Premium puzzles with a modern, bayou‑minimal vibe</h2>
+      <p>Matte finish. Tight cuts. Archival color. Limited runs you’ll actually want to frame.</p>
+      <div class="cta"><a class="btn btn-primary btn-puzzle" href="payments/checkout.html">Buy — Choose Tip</a><a class="btn btn-ghost" href="#shop">Browse all</a></div>
+    </div>
+    <div class="imgwrap"><img src="assets/hero.jpg" alt="Puzzle hero"></div>
+  </div>
+</section>
+<main class="wrap" id="shop">
+  <h3 style="font-weight:900;margin:6px 0 12px">Featured Puzzles</h3>
+  <section id="puzzleGrid" class="grid"><div class="card"><div class="imgwrap"></div><div class="title">Loading…</div></div></section>
+</main>
+<footer><div class="wrap inner">© <span id="yr"></span> Sean x Wonder Piece Studio • All rights reserved.</div></footer>
+<script>
+(async function(){
+  try{const cfg = await (await fetch('config.json')).json();const it = document.getElementById('itToolsLink'); if(it && cfg.itToolsLink) it.href = cfg.itToolsLink;}catch(e){}
+  try{const res = await fetch('puzzles.json'); const data = await res.json(); const grid = document.getElementById('puzzleGrid'); grid.innerHTML='';
+    (data.items||[]).filter(x=>x.active!==false).forEach(p=>{const c = document.createElement('article'); c.className='card';
+      c.innerHTML = `<div class='imgwrap'><img src='${p.img}' alt='${p.title}'/></div><span class='tag'>${p.tag||''}</span><div class='title'>${p.title}</div><div class='meta'>${p.pieces||''} pcs ${p.size?(' • '+p.size):''}</div><div style='margin-top:8px'><a class='btn btn-primary btn-puzzle' href='payments/checkout.html'>Buy</a><a class='btn btn-ghost' href='gallery.html'>Details</a></div>`;
+      grid.appendChild(c);});}catch(e){document.getElementById('puzzleGrid').innerHTML = '<div class="card">Add puzzles in Admin to populate this grid.</div>';}
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();</script>
+</body></html>

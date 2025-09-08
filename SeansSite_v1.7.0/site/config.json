@@ -1,0 +1,42 @@
+{
+  "itemName": "Bayou Vibe Puzzle",
+  "basePrice": 39.0,
+  "currency": "USD",
+  "paypal": {
+    "business": "sbcnawonderbayou@gmail.com"
+  },
+  "cashapp": {
+    "enabled": false,
+    "cashtag": "Dewaynecox123456"
+  },
+  "itToolsLink": "https://reliable-pasca-11ae81.netlify.app/",
+  "tipPresets": [
+    0,
+    2,
+    5,
+    10
+  ],
+  "ticketPrefix": "WPS",
+  "showcase": {
+    "enabled": true,
+    "fee": 15.0,
+    "currency": "USD",
+    "title": "Showcase Your Work",
+    "description": "Submit your art to be featured on our gallery. A small showcase fee helps us review and host your work.",
+    "providers": {
+      "paypalMe": {
+        "enabled": true,
+        "link": "https://www.paypal.com/paypalme/Dewaynecox123456"
+      },
+      "cashapp": {
+        "enabled": true,
+        "cashtag": "kittyslayer227"
+      }
+    }
+  },
+  "commissions": {
+    "enabled": true,
+    "email": "sbcnawonderbayou@gmail.com",
+    "notes": "Tell us what you\u2019d like commissioned and we\u2019ll reply with a quote."
+  }
+}

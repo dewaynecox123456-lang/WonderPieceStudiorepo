@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "title": "River Boat Model Kit",
+      "price": "29.00",
+      "img": "assets/model1.jpg",
+      "desc": "Beginner kit \u2022 glue included"
+    },
+    {
+      "title": "Bayou Cabin Diorama",
+      "price": "42.00",
+      "img": "assets/model2.jpg",
+      "desc": "Intermediate \u2022 paint set not included"
+    }
+  ]
+}
