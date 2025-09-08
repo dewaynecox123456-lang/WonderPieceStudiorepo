@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css"><title>Checkout</title></head>
+<body><div class="wrap">
+  <h1>Checkout</h1>
+  <div id="load" class="card">Loading…</div>
+  <div id="main" class="card" style="display:none">
+    <div id="item" style="font-weight:900"></div>
+    <p>Tip:</p><p id="tips"></p>
+    <p>Total: <span id="total">$0.00</span></p>
+    <p>
+      <button id="pp" class="btn btn-primary">PayPal</button>
+      <button id="ca" class="btn" style="display:none">Cash App</button>
+      <button id="rcpt" class="btn">Studio Receipt</button>
+    </p>
+  </div>
+</div>
+<script>
+let cfg={}, tip=0;
+function money(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:cfg.currency||'USD'}).format(n)}
+function rebuild(){
+  const total=(+cfg.basePrice)+(+tip||0);
+  document.getElementById('total').textContent=money(total);
+  document.getElementById('pp').onclick=()=>{
+    const u='https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&'+new URLSearchParams({
+      business:cfg.paypal.business,item_name:cfg.itemName,amount:total.toFixed(2),currency_code:cfg.currency||'USD'
+    });
+    location.href=u;
+  };
+  const ca=document.getElementById('ca');
+  if(cfg.cashapp?.enabled){
+    ca.style.display='inline-block';
+    ca.onclick=()=>{ const tag=(cfg.cashapp.cashtag||'').replace('$',''); location.href=`https://cash.app/$${tag}/${total.toFixed(2)}`; };
+  } else { ca.style.display='none'; }
+  document.getElementById('rcpt').onclick=()=>{
+    const p=new URLSearchParams({item:cfg.itemName,base:cfg.basePrice,tip:(tip||0).toFixed(2),total:total.toFixed(2),ts:new Date().toISOString()});
+    location.href='receipt.html?'+p.toString();
+  };
+}
+fetch('../config.json').then(r=>r.json()).then(c=>{
+  cfg=c; document.getElementById('load').style.display='none'; const main=document.getElementById('main'); main.style.display='block';
+  document.getElementById('item').textContent = `${c.itemName} — ${money(c.basePrice)}`;
+  const tips=document.getElementById('tips'); (c.tipPresets||[0,2,5,10]).forEach(v=>{
+    const b=document.createElement('button'); b.textContent='$'+v; b.className='btn'; b.onclick=()=>{ tip=v; rebuild(); }; tips.appendChild(b);
+  });
+  rebuild();
+});
+</script>
+</body></html>

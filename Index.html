@@ -1,0 +1,35 @@
+!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>Wonder Piece Studio</title>
+</head><body>
+<div class="wrap">
+  <h1 style="margin:6px 0">Wonder Piece Studio</h1>
+  <p>Puzzles • Crochet • Models • Supplies</p>
+  <p>
+    <a class="btn btn-primary" href="payments/checkout.html">Buy — Choose Tip</a>
+    <a class="btn" href="gallery.html">Gallery</a>
+    <a class="btn" href="admin/">Admin</a>
+  </p>
+  <div class="card">
+    <h3>Featured Puzzles</h3>
+    <div id="grid" class="grid"><div class="card">Loading…</div></div>
+  </div>
+</div>
+<script>
+fetch('puzzles.json').then(r=>r.json()).then(d=>{
+  const g=document.getElementById('grid'); g.innerHTML='';
+  (d.items||[]).filter(x=>x.active!==false).forEach(p=>{
+    const el=document.createElement('div'); el.className='card';
+    el.innerHTML = `
+      <div><img src="${p.img}" alt="${p.title}" style="width:100%;height:160px;object-fit:cover;border-radius:8px"></div>
+      <div style="font-weight:900;margin-top:6px">${p.title}</div>
+      <div style="color:#a9b3ce">${p.pieces} pcs • ${p.size||''}</div>
+      <p><a class="btn btn-primary" href="payments/checkout.html">Buy</a></p>`;
+    g.appendChild(el);
+  });
+}).catch(()=>{
+  document.getElementById('grid').innerHTML='<div class="card">Add puzzles in puzzles.json</div>';
+});
+</script>
+</body></html>

@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "title": "Sweet Tea Moon",
+      "price": 12,
+      "pieces": 500,
+      "size": "18×24 in",
+      "img": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%230b0f19'/><text x='50%' y='50%' fill='%23e6ecff' font-family='Arial' font-size='28' text-anchor='middle' dominant-baseline='middle'>Puzzle Image</text></svg>",
+      "tag": "Limited Run",
+      "active": true
+    }
+  ]
+}

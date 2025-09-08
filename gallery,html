@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>Gallery — Wonder Piece Studio</title>
+</head><body>
+<div class="wrap">
+  <h1>Gallery</h1>
+  <div id="grid" class="grid"><div class="card">Loading…</div></div>
+
+  <div id="show" class="card" style="display:none">
+    <h3 id="title">Showcase Your Work</h3>
+    <p id="desc">Submit your art.</p>
+    <button id="open" class="btn btn-primary">Submit — <span id="fee">$15</span></button>
+    <form id="form" name="showcase" method="POST" data-netlify="true" style="display:none;margin-top:10px">
+      <input type="hidden" name="form-name" value="showcase">
+      <input type="hidden" name="ticketId" id="ticketId">
+      <p><input name="name" placeholder="Your Name" required></p>
+      <p><input name="email" placeholder="Your Email" required></p>
+      <p><input name="portfolio" placeholder="Portfolio URL"></p>
+      <p><textarea name="notes" placeholder="Notes" rows="4"></textarea></p>
+      <p>
+        <a id="pp" class="btn btn-primary" target="_blank" style="display:none">PayPal</a>
+        <a id="ca" class="btn" target="_blank" style="display:none">Cash App</a>
+      </p>
+    </form>
+  </div>
+
+  <p><a href="/">← Back</a></p>
+</div>
+<script>
+function ticket(prefix){const d=new Date();const ymd=d.toISOString().slice(0,10).replace(/-/g,'');const r=Math.floor(1000+Math.random()*9000);return `${prefix||'WPS'}-${ymd}-${r}`}
+
+fetch('gallery.json').then(r=>r.json()).then(d=>{
+  const g=document.getElementById('grid'); g.innerHTML='';
+  (d.images||[]).forEach(x=>{
+    const el=document.createElement('div'); el.className='card';
+    el.innerHTML = `<img src="${x.img}" alt="${x.title||''}" style="width:100%;height:180px;object-fit:cover;border-radius:8px">
+                    <div style="font-weight:900;margin-top:6px">${x.title||''}</div>`;
+    g.appendChild(el);
+  });
+});
+
+fetch('config.json').then(r=>r.json()).then(c=>{
+  const sc=c.showcase||{}; if(!sc.enabled) return;
+  document.getElementById('show').style.display='block';
+  document.getElementById('title').textContent=sc.title||'Showcase Your Work';
+  document.getElementById('desc').textContent=sc.description||'';
+  document.getElementById('fee').textContent=new Intl.NumberFormat('en-US',{style:'currency',currency:sc.currency||'USD'}).format(sc.fee||15);
+
+  document.getElementById('open').onclick=()=>{
+    const form=document.getElementById('form'); form.style.display='block';
+    document.getElementById('ticketId').value = ticket(c.ticketPrefix||'WPS');
+    const pp=sc.providers?.paypalMe, ca=sc.providers?.cashapp;
+    if(pp?.enabled){
+      const base=pp.link||''; const url=base.endsWith('/')? base+(sc.fee||15) : base+'/'+(sc.fee||15);
+      const a=document.getElementById('pp'); a.href=url; a.style.display='inline-block';
+    }
+    if(ca?.enabled){
+      const tag=(ca.cashtag||'').replace('$','');
+      const a=document.getElementById('ca'); a.href=`https://cash.app/$${tag}/${(sc.fee||15).toFixed(2)}`; a.style.display='inline-block';
+    }
+  };
+});
+</script>
+</body></html>
