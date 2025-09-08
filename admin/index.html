@@ -1,76 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; }
-  .card { border:1px solid #ddd; border-radius:8px; padding:16px; margin-bottom:16px; }
-  label { display:block; margin:8px 0 4px; }
-  input[type=text], input[type=password] { width: 100%; padding:8px; }
-  button { padding:10px 16px; margin-top:8px; }
-  .muted { color:#666; font-size:12px; }
-  footer { text-align:center; padding: 24px 0; color:#666; font-size:12px; }
-</style>
-</head>
-<body>
-  <h1>Admin</h1>
-  <div id="login" class="card">
-    <h3>Login</h3>
-    <label>Email</label>
-    <input id="email" type="text" placeholder="you@example.com">
-    <label>Password</label>
-    <input id="password" type="password" placeholder="••••••••">
-    <button onclick="login()">Sign In</button>
-    <p class="muted">Temporary client-side gate. For real security, enable Netlify Identity or a serverless auth function.</p>
-  </div>
-
-  <div id="panel" class="card" style="display:none;">
-    <h3>Settings</h3>
-    <label>Payments URL</label>
-    <input id="paymentsUrl" type="text">
-    <button onclick="saveUrl()">Save</button>
-
-    <h3 style="margin-top:24px;">Change Password</h3>
-    <label>New Password</label>
-    <input id="newPass" type="password">
-    <button onclick="changePwd()">Change</button>
-  </div>
-
-  <footer>© YEAR_PLACEHOLDER Wonder Piece Studio. All Rights Reserved.</footer>
-
-<script>
-  const ADMIN_USERS = [
-    {{ email: "sbcnawonderbayou@gmail.com", pass: "CHANGE_ME_1" }},
-    {{ email: "watkinssean@wonderpiecestudios.com", pass: "CHANGE_ME_2" }}
-  ];
-  const KEY_PAY_URL = 'wb_payments_url';
-  const KEY_AUTH = 'wb_admin_auth';
-
-  function login(){
-    const e = document.getElementById('email').value.trim();
-    const p = document.getElementById('password').value;
-    const ok = ADMIN_USERS.find(u => u.email===e && u.pass===p);
-    if(ok){ localStorage.setItem(KEY_AUTH, e); showPanel(); } else { alert('Invalid credentials'); }
-  }
-  function showPanel(){
-    document.getElementById('login').style.display='none';
-    document.getElementById('panel').style.display='block';
-    document.getElementById('paymentsUrl').value = localStorage.getItem(KEY_PAY_URL) || 'https://reliable-pasca-11ae81.netlify.app/';
-  }
-  function saveUrl(){
-    localStorage.setItem(KEY_PAY_URL, document.getElementById('paymentsUrl').value.trim());
-    alert('Saved');
-  }
-  function changePwd(){
-    const email = localStorage.getItem(KEY_AUTH);
-    const np = document.getElementById('newPass').value;
-    if(!email){ alert('Not logged in'); return; }
-    const idx = ADMIN_USERS.findIndex(u=>u.email===email);
-    if(idx>=0){ ADMIN_USERS[idx].pass = np; alert('Password changed (client-side only).'); }
-  }
-  (function(){ document.querySelector('footer').innerHTML = '© ' + new Date().getFullYear() + ' Wonder Piece Studio. All Rights Reserved.'; })();
-</script>
-</body>
-</html>
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — Wonder Piece Studio</title>
+<link href="https://unpkg.com/modern-normalize/modern-normalize.css" rel="stylesheet">
+<style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b0f19;color:#e6ecff;margin:0}header{padding:16px 20px;border-bottom:1px solid #1c2440;background:#0d1222}header h1{margin:0;font-size:18px}</style>
+</head><body>
+<header><h1>Admin — Content Manager</h1></header>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body></html>

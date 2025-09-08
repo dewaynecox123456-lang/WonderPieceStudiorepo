@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "title": "Handmade Crochet Pelican",
+      "price": "24.00",
+      "img": "assets/crochet1.jpg",
+      "desc": "Local yarn \u2022 8in tall \u2022 Made with love."
+    },
+    {
+      "title": "Bayou Beanie",
+      "price": "18.00",
+      "img": "assets/crochet2.jpg",
+      "desc": "One size fits most \u2022 Warm & comfy."
+    }
+  ]
+}
