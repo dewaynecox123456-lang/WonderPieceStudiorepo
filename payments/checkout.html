@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout — Wonder Piece Studio</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>Checkout</h1>
+    <div id="main" class="card">
+      <div id="item" style="font-weight:900"></div>
+      <p>Select a tip:</p>
+      <p id="tips"></p>
+      <p>Total: <span id="total">.00</span></p>
+      <p>
+        <button id="pp" class="btn btn-primary">PayPal</button>
+        <button id="ca" class="btn">Cash App</button>
+        <button id="rcpt" class="btn">Studio Receipt</button>
+      </p>
+    </div>
+  </div>
+
+<script>
+let cfg = {
+  itemName: "Wonder Piece Puzzle",
+  basePrice: 12.00,
+  currency: "USD",
+  paypal: { business: "sbcnawonderbayou@gmail.com" },
+  cashapp: { cashtag: "kittyslayer227" },
+  tipPresets: [0, 2, 5, 10]
+};
+
+let tip = 0;
+function money(n){ return new Intl.NumberFormat("en-US",{style:"currency",currency:cfg.currency}).format(n); }
+
+function rebuild(){
+  const total = cfg.basePrice + tip;
+  document.getElementById("total").textContent = money(total);
+
+  document.getElementById("pp").onclick = () => {
+    const url = "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&" + new URLSearchParams({
+      business: cfg.paypal.business,
+      item_name: cfg.itemName,
+      amount: total.toFixed(2),
+      currency_code: cfg.currency
+    });
+    location.href = url;
+  };
+
+  document.getElementById("ca").onclick = () => {
+    const tag = cfg.cashapp.cashtag.replace("$","");
+    location.href = https://cash.app/.\style.css{tag}/;
+  };
+
+  document.getElementById("rcpt").onclick = () => {
+    const p = new URLSearchParams({item: cfg.itemName, base: cfg.basePrice, tip, total, ts: new Date().toISOString()});
+    location.href = "receipt.html?" + p.toString();
+  };
+}
+
+document.getElementById("item").textContent = ${cfg.itemName} — ;
+const tips = document.getElementById("tips");
+cfg.tipPresets.forEach(v => {
+  const b = document.createElement("button");
+  b.textContent = "$" + v;
+  b.className = "btn";
+  b.onclick = () => { tip = v; rebuild(); };
+  tips.appendChild(b);
+});
+rebuild();
+</script>
+</body>
+</html>

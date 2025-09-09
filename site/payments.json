@@ -1,0 +1,15 @@
+﻿{
+  "currency": "USD",
+  "tipPresets": [0, 2, 5, 10],
+  "paypal": { "business": "sbcnawonderbayou@gmail.com" },
+
+  "items": [
+    { "id": "sweet-tea-moon", "title": "Sweet Tea Moon", "price": 12.00 },
+    { "id": "bayou-vibe",     "title": "Bayou Vibe",     "price": 12.00 },
+    { "id": "fair-city",      "title": "Fair City",      "price": 12.00 },
+    { "id": "heron-dock",     "title": "Heron Dock",     "price": 12.00 },
+    { "id": "jesus-sunrise",  "title": "Jesus Sunrise",  "price": 12.00 },
+    { "id": "porch-night",    "title": "Porch Night",    "price": 12.00 },
+    { "id": "bayou-bridge",   "title": "Bayou Bridge",   "price": 12.00 }
+  ]
+}

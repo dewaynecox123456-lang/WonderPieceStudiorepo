@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dewayne Cox — Information Systems Engineer | Wonder Piece Studio</title>
+<link rel="icon" href="/public/favicon.ico"/><link rel="stylesheet" href="/assets/styles.css"/>
+</head><body>
+<header class="header"><div class="container" style="display:flex;align-items:center;gap:12px">
+  <div class="brand"><h1>Dewayne Cox — Information Systems Engineer</h1></div>
+  <nav class="nav"><a href="#products">Products</a><a href="#services">Services</a><a href="/admin/index.html">Admin</a>
+  <button onclick="hireMe()">Hire Me</button></nav>
+</div></header>
+<main class="container">
+  <section class="hero"><span class="badge">ONE FILE READY</span><h2>Automation, Deployments & Payments — and more, right at your fingertips.</h2>
+  <p class="kicker"><button onclick="emailMe()">Email Me</button></p></section>
+  <div class="section-title" id="products"><h3>Products (Downloadable)</h3><span class="small">Edit /data/products.json</span></div>
+  <section class="grid" id="productsWrap"></section>
+  <div class="section-title" id="services"><h3>Services (Fixed-price)</h3><span class="small">Edit /data/services.json</span></div>
+  <section id="servicesWrap"></section>
+  <hr/>
+  <div class="section-title"><h3>Follow & Connect</h3><span class="small">Edit /data/social.json</span></div>
+  <div class="socials" id="socialWrap"></div>
+  <hr/>
+  <p class="small">Need something custom? Click <button onclick="emailMe()">Email Me</button> or use Hire Me above.</p>
+</main>
+<footer class="footer"><div class="container">© 2025 DeWayne Cox. All Rights Reserved.</div></footer>
+<script>
+const EMAIL = "dewaynee123456@gmail.com";
+function emailMe(){ window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('General Inquiry'); }
+function hireMe(){ window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Job Request'); }
+async function j(p){ const r=await fetch(p); return r.json(); }
+function productCard(x){ const el=document.createElement('div'); el.className='card'; el.innerHTML =
+  `<h4>${x.title}</h4><p>${x.description||''}</p><div class="price">$${Number(x.price).toFixed(2)}</div>
+   <div class="btns"><a href="${x.paypal_me}" target="_blank" rel="noopener"><button>PayPal</button></a>
+   <a href="${x.cash_app}" target="_blank" rel="noopener"><button>Cash App</button></a>
+   <a href="${x.deliver}" download><button>Download</button></a></div>`; return el; }
+function serviceRow(s){ const row=document.createElement('div'); row.className='tr'; row.innerHTML =
+  `<div><strong>${s.title}</strong><div class="small">${s.description||''}</div></div>
+   <div><strong>$${Number(s.price).toFixed(2)}</strong></div>
+   <div><a href="${s.pay_link||'#'}" target="_blank" rel="noopener"><button>Start</button></a></div>`; return row; }
+function socialBtn(name, url){ const a=document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; a.textContent=name; return a; }
+(async()=>{
+  const pWrap=document.getElementById('productsWrap'); const sWrap=document.getElementById('servicesWrap'); const soWrap=document.getElementById('socialWrap');
+  try{ (await j('/data/products.json')).forEach(p=>pWrap.appendChild(productCard(p))); }catch(e){ pWrap.innerHTML='<div class="card">Missing /data/products.json</div>'; }
+  try{ (await j('/data/services.json')).forEach(s=>sWrap.appendChild(serviceRow(s))); }catch(e){ sWrap.innerHTML='<div class="card">Missing /data/services.json</div>'; }
+  try{ const S = await j('/data/social.json'); if(S.instagram) soWrap.appendChild(socialBtn('Instagram', S.instagram));
+        if(S.tiktok) soWrap.appendChild(socialBtn('TikTok', S.tiktok));
+        if(S.facebook) soWrap.appendChild(socialBtn('Facebook', S.facebook)); }catch(e){ soWrap.innerHTML='<div class="card">Missing /data/social.json</div>'; }
+})();
+</script>
+</body></html>

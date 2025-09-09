@@ -1,0 +1,30 @@
+:root{--bg:#0a0c10;--panel:#0f141b;--panel-2:#121926;--text:#eaf0f8;--muted:#a8b3c7;--accent:#00d4ff;--accent2:#46ffe0}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:radial-gradient(900px 500px at 15% -10%,#10223a 0%,transparent 60%),radial-gradient(900px 500px at 100% 0%,#08121f 0%,transparent 55%),var(--bg);color:var(--text)}
+a{color:var(--accent);text-decoration:none}
+.header{position:sticky;top:0;z-index:10;background:rgba(8,12,18,.75);backdrop-filter:blur(6px);border-bottom:1px solid #1e2a39}
+.container{max-width:1180px;margin:0 auto;padding:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand h1{font-size:22px;margin:0}
+.nav{margin-left:auto;display:flex;gap:10px}
+.nav a, .nav button{padding:8px 12px;border-radius:12px;border:1px solid #263041;background:#0f141c;color:#eaf0f8;cursor:pointer}
+.hero{padding:38px 0 10px}
+.hero h2{font-size:36px;line-height:1.1;margin:0 0 10px}
+.hero p{color:var(--muted);margin:0}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#07131f;font-weight:700;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin:18px 0 24px}
+.section-title{display:flex;align-items:center;gap:8px;margin:30px 0 10px}
+.section-title h3{margin:0;font-size:22px}
+.card{background:linear-gradient(180deg,var(--panel) 0%, var(--panel-2) 100%);border:1px solid #1d2a3a;border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.card h4{margin:0 0 6px}
+.price{font-weight:800;margin:10px 0 14px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button{padding:10px 14px;border-radius:12px;border:1px solid #2a3648;background:#131b28;color:#fff;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+.table{width:100%;border-collapse:separate;border-spacing:0 10px}
+.tr{display:grid;grid-template-columns:1.2fr 1fr auto;gap:14px;background:linear-gradient(180deg,var(--panel) 0%, var(--panel-2) 100%);border:1px solid #1d2a3a;border-radius:14px;padding:14px;margin:10px 0}
+.footer{border-top:1px solid #1f2a3a;color:var(--muted);padding:20px 0;margin-top:40px}
+.small{font-size:12px;color:var(--muted)}
+.kicker{color:var(--muted)}
+hr{border:none;border-top:1px solid #213044;margin:24px 0}
+.socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.socials a{padding:8px 12px;border-radius:12px;border:1px solid #263041;background:#0f141c;color:#eaf0f8}

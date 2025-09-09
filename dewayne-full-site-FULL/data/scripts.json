@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Build-Zip.ps1",
+    "app": "Site Bundler",
+    "size": "2 KB",
+    "description": "Package your project folder into a deployable .zip file."
+  },
+  {
+    "name": "Check-Links.ps1",
+    "app": "Link Checker",
+    "size": "2 KB",
+    "description": "Verify PayPal, Cash App, and site URLs return valid responses."
+  },
+  {
+    "name": "Update-Prices.ps1",
+    "app": "Price Updater",
+    "size": "2 KB",
+    "description": "Adjust product prices in data/products.json by percentage."
+  },
+  {
+    "name": "Website-DownCheck.ps1",
+    "app": "Uptime Monitor",
+    "size": "2 KB",
+    "description": "Quickly check if your website is online and returning HTTP 200."
+  }
+]

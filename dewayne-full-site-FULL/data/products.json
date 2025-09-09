@@ -1,0 +1,29 @@
+[
+  {
+    "sku": "POCKET-REF",
+    "title": "Pocket Reference",
+    "price": 9.99,
+    "description": "Quick\u2011start TikTok + Payments pocket guide.",
+    "paypal_me": "https://www.paypal.me/Dewaynecox123456/9.99",
+    "cash_app": "https://cash.app/$kittyslayer227/9.99",
+    "deliver": "files/pocket-reference.pdf"
+  },
+  {
+    "sku": "MAIN-GUIDE",
+    "title": "Technical Guide (Full Manual)",
+    "price": 29.0,
+    "description": "Full technical how\u2011to with examples and links.",
+    "paypal_me": "https://www.paypal.me/Dewaynecox123456/29.00",
+    "cash_app": "https://cash.app/$kittyslayer227/29.00",
+    "deliver": "files/technical-guide.pdf"
+  },
+  {
+    "sku": "WPS-AUTO-SCRIPTS",
+    "title": "WPS Automation Script Pack",
+    "price": 19.0,
+    "description": "Four verified PowerShell tools (bundle, check links, update prices, uptime check).",
+    "paypal_me": "https://www.paypal.me/Dewaynecox123456/19.00",
+    "cash_app": "https://cash.app/$kittyslayer227/19.00",
+    "deliver": "files/wps-automation-pack.zip"
+  }
+]

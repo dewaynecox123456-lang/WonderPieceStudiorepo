@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "title": "Sweet Tea Moon", "img": "site/assets/puzzles/Sweet_tea_moon.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Bayou Bridge", "img": "site/assets/puzzles/Bayou_bridge.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Bayou Vibe", "img": "site/assets/puzzles/Bayou_vibe.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Porch Night", "img": "site/assets/puzzles/Porch_night.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Fair City", "img": "site/assets/puzzles/Fair_City.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Heron Dock", "img": "site/assets/puzzles/Heron_dock.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" },
+    { "title": "Jesus Sun Rise", "img": "site/assets/puzzles/Jesus_sun-rise.jpeg", "pieces": "500 pcs", "size": "18x24 in", "price": "$12" }
+  ]
+}

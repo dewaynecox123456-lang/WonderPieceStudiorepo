@@ -1,0 +1,30 @@
+[
+  {
+    "code": "S-STARTER",
+    "title": "Website Launch (Netlify + GitHub)",
+    "price": 149.0,
+    "description": "Repo setup, Netlify connect, deploy tested, payments wired.",
+    "pay_link": "https://www.paypal.me/Dewaynecox123456/149.00"
+  },
+  {
+    "code": "S-PAYMENTS",
+    "title": "Payment Integration (PayPal + Cash App)",
+    "price": 99.0,
+    "description": "Configure checkout flows, test links, receipts, and refund policy integration.",
+    "pay_link": "https://www.paypal.me/Dewaynecox123456/99.00"
+  },
+  {
+    "code": "S-AUTOMATION",
+    "title": "Automation Setup (Scripts)",
+    "price": 129.0,
+    "description": "Install and configure scripts; one\u2011click bundle & checks.",
+    "pay_link": "https://www.paypal.me/Dewaynecox123456/129.00"
+  },
+  {
+    "code": "S-REMOTE",
+    "title": "Remote Troubleshooting (per hour)",
+    "price": 59.0,
+    "description": "Screen\u2011share session to diagnose and fix build/deploy issues.",
+    "pay_link": "https://www.paypal.me/Dewaynecox123456/59.00"
+  }
+]

@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Admin — Script Manager</title>
+<link rel="stylesheet" href="/assets/styles.css"></head>
+<body class="container">
+<h1>Admin (Offline Editor)</h1><p class="small">Edit then export JSON; commit to <code>/data/</code>.</p>
+<div class="card"><h4>products.json</h4><textarea id="p" style="width:100%;height:220px"></textarea><br><button onclick="ex('products.json',p.value)">Export</button></div>
+<div class="card"><h4>services.json</h4><textarea id="s" style="width:100%;height:220px"></textarea><br><button onclick="ex('services.json',s.value)">Export</button></div>
+<div class="card"><h4>payments.json</h4><textarea id="pay" style="width:100%;height:180px"></textarea><br><button onclick="ex('payments.json',pay.value)">Export</button></div>
+<div class="card"><h4>scripts.json (registry)</h4>
+  <div class="row">
+    <input id="name" placeholder="Website-DownCheck.ps1">
+    <input id="app" placeholder="Uptime Monitor">
+    <input id="size" placeholder="2 KB">
+    <input id="desc" placeholder="Quickly check if your website is online (HTTP 200).">
+  </div>
+  <div class="tabbar">
+    <button onclick="addScript()">Add to list</button>
+    <button onclick="exportScripts()">Export scripts.json</button>
+  </div>
+  <div id="list" class="tableList" style="margin-top:10px"></div>
+  <h5 class="small" style="margin-top:12px">Raw JSON</h5>
+  <textarea id="scripts" style="width:100%;height:180px"></textarea>
+</div>
+<script>
+async function load(id, path){ const r=await fetch(path); document.getElementById(id).value = await r.text(); }
+function ex(name, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'application/json'})); a.download=name; a.click();}
+function getScripts(){ try{ return JSON.parse(document.getElementById('scripts').value || '[]'); } catch(e){ alert('Invalid JSON in scripts.json'); return []; } }
+function setScripts(arr){ document.getElementById('scripts').value = JSON.stringify(arr, null, 2); renderList(); }
+function addScript(){
+  const name = document.getElementById('name').value.trim();
+  const app  = document.getElementById('app').value.trim();
+  const size = document.getElementById('size').value.trim();
+  const desc = document.getElementById('desc').value.trim();
+  if(!name){ alert('Name is required'); return; }
+  const arr = getScripts();
+  arr.push({ name, app, size, description: desc });
+  setScripts(arr);
+  document.getElementById('name').value=''; document.getElementById('app').value=''; document.getElementById('size').value=''; document.getElementById('desc').value='';
+}
+function removeScript(idx){ const arr = getScripts(); arr.splice(idx,1); setScripts(arr); }
+function exportScripts(){ ex('scripts.json', document.getElementById('scripts').value); }
+function renderList(){
+  const listEl = document.getElementById('list'); listEl.innerHTML='';
+  const arr = getScripts();
+  arr.forEach((it, idx) => {
+    const row = document.createElement('div'); row.className='tr';
+    row.innerHTML = `<div>${it.name||''}</div><div>${it.app||''}</div><div>${it.size||''}</div><div class='small'>${it.description||''}</div>`;
+    const btn = document.createElement('button'); btn.textContent='Remove'; btn.onclick=()=>removeScript(idx);
+    row.appendChild(btn); listEl.appendChild(row);
+  });
+}
+(async () => {
+  await load('p','/data/products.json'); await load('s','/data/services.json'); await load('pay','/data/payments.json'); await load('scripts','/data/scripts.json');
+  renderList();
+})();
+</script>
+</body></html>

@@ -1,0 +1,6 @@
+﻿body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b0f19;color:#e6ecff;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+.card{background:#0f162b;border:1px solid #1c2440;border-radius:12px;padding:12px;margin:8px 0}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #2b3966;text-decoration:none;color:#fff;cursor:pointer}
+.btn-primary{background:#2e6cff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}

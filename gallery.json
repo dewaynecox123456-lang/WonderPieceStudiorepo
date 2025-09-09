@@ -11,6 +11,55 @@
     {
       "title": "Box & Pieces",
       "img": "assets/sample3.jpg"
+    },
+    {
+      "title": "Sweet Tea Moon",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Sweet_tea_moon.jpeg"
+    },
+    {
+      "title": "Bayou Vibe",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Bayou_vibe.jpeg"
+    },
+    {
+      "title": "Fair City",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Fair_City.jpeg"
+    },
+    {
+      "title": "Heron Dock",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Heron_dock.jpeg"
+    },
+    {
+      "title": "Jesus Sunrise",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Jesus_sun-rise.jpeg"
+    },
+    {
+      "title": "Porch Night",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Porch_night.jpeg"
+    },
+    {
+      "title": "Bayou Bridge",
+      "pieces": 500,
+      "size": "18x24 in",
+      "price": 12.00,
+      "image": "assets/puzzles/Bayou_bridge.jpeg"
     }
   ]
 }
